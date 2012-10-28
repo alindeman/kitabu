@@ -24,7 +24,7 @@ module Kitabu
     def self.to_html(content)
       case engine.name
       when "Redcarpet"
-        render = Redcarpet::Render::HTML.new(:hard_wrap => true, :xhtml => true)
+        render = Redcarpet::Render::HTML.new(:xhtml => true)
         Redcarpet::Markdown.new(render).render(content)
       else
         engine.new(content).to_html
