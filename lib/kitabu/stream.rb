@@ -21,7 +21,7 @@ module Kitabu
     end
 
     def emit(node)
-      listener.send(:tag, node) if node.name =~ /h2/
+      listener.send(:tag, node) if node.name =~ /h[12]/
     end
   end
 end

@@ -16,7 +16,7 @@ module Kitabu
       def self.normalize(content)
         counter = {}
         html = Nokogiri::HTML.parse(content)
-        html.search("h2").each do |tag|
+        html.search("h1, h2").each do |tag|
           title = tag.inner_text
           permalink = title.to_permalink
 
@@ -48,7 +48,7 @@ module Kitabu
 
       def tag(node) # :nodoc:
         toc << {
-          :level     => node.name.gsub(/[^\d]/, "").to_i,
+          :level     => node.name.gsub(/[^\d]/, "").to_i + 1,
           :text      => node.text,
           :permalink => node["id"]
         }
